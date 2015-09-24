@@ -1,0 +1,107 @@
+CS640: Introduction to Computer Networks
+Programming Assignment 1: Socket programming and measurement
+September 23, 2014
+
+Project group:
+
+Michael Bauer (bauer@cs.wisc.edu)
+Mark Coatsworth (coatsworth@cs.wisc.edu)
+
+
+QUESTION 2
+
+What is the expected latency and throughput of the path between the hosts?
+	
+* Latency: this will be the sum of the average latencies of L1, L2, L3
+	= Average(L1) + Average(L2) + Average(L3)
+	= 84.1ms + 25.55ms + 85.85ms 
+	= 195.5ms, or ~200ms
+
+* Throughput: will be determined by the "weakest link". In this case these are L1 and L3, which are on the order of 20 Mbps.
+	~= 20 Mbps.
+
+Actual results:
+
+* Latency: 187.45ms
+
+* Throughput: 19.058 Mbps
+
+Our actual results are as expected.
+
+
+
+QUESTION 3
+
+What is the expected latency and throughput when two pairs of hosts are communicating simultaneously? Three pairs?
+
+* Latency: We believe there will be increased latency due to ping packets building up at L1 from s1 to s2. Since the router will not be able to transmit all packets at once, there will be transmission delay. This will increase the original L1 latency from 40ms to 80ms; after all, all other delays will remain constant. So we are expected a latency of ~240ms for 2 connections. For 3 connections we think the same pattern would hold and the latency would be ~280ms.
+
+* Throughput: For 2 simultaneous connections, L1 link (20 Mbps) will have to split its bandwidth between the connections, and hence only support 10Mbps per connection. This will be the maximum throughput for each. For 3 connections, the throughput will be split 3 ways for a resulting bandwidth of ~6.6 Mbps each.
+
+
+Actual results (2 Links):
+
+* H1:H4
+	RTT = 187.5ms
+	Throughput = 10.66 Mbps
+
+* H8:H9
+	RTT = 187.35ms
+	Throughput = 10.98 Mbps
+
+Actual results (3 Links):
+
+* H1:H4
+	RTT = 186.35ms
+	Throughput = 7.84 Mbps
+
+* H8:H9
+	RTT = 187.5ms
+	Throughput = 5.725 Mbps
+
+* H7:H10
+	RTT = 187.3ms
+	Throughput = 7.864 Mbps
+	
+Notes on results:
+
+* The actual results for our Pinger tests were different that our expected results. We forgot that they are only sending one packet every second -- hence no transmission delay at the switches. So the resulting RTT was simply the sum of latencies of the three links.
+
+* Actual results for throughput tests were pretty much as expected. There was some deviance in our results because we were starting the tests manually, so they were not starting at exactly the same time.
+
+* We were worried about transmission delay in the throughput tests, but this was not an issue. 	
+	
+* Note: we measured the RTT and throughput from the client side, so throughput values were a little higher due to lack of synchronicity on timing.
+
+
+
+QUESTION 4
+
+What is the expected latency and throughput for each pair?
+
+* Latency: having learned from our mistakes in Q3, we estimate this will just be the same as before: the sum of average latencies on all links. The 1-second delays between pings ensure there will no transmission delay.
+
+	H1:H4 = Average(L1) + Average(L2) + Average(L3)
+		= 84.1ms + 25.55ms + 85.85ms 
+		= 195.5ms, or ~200ms
+
+	H5:H6 = Average(L4) + Average(L2) + Average(L5)
+		= 15.4ms + 25.5ms + 14.85ms 
+		= 55.75ms or ~50ms
+
+* Throughput: once again throughput will be regulated by the weakest link. Since both H1:H4 and H5:H6 cross L2 at the same time, the total bandwidth on this link (40 Mbps) will get split evenly between the two connections, hence 20 Mbps per connection. All the other links on these connections (L1, L2, L3, L5) all have maximum bandwidth of 20 Mbps. Hence, we estimate bandwidth to be on the order of 20 Mbps for both connections.
+
+Actual results:
+
+* H1:H4
+	RTT = 186.15ms
+	Throughput = 18.02 Mbps
+
+* H5:H6
+	RTT = 45.9ms
+	Throughput = 19.55 Mbps
+
+Our actual results are as expected. The RTT times for H5:H6 were slightly faster than expected, although close enough that we feel we can attribute them to minor timing errors.
+
+
+

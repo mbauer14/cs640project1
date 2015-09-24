@@ -1,0 +1,21 @@
+size=12 from=10.0.0.3 seq=1 rtt=35 ms
+size=12 from=10.0.0.3 seq=2 rtt=24 ms
+size=12 from=10.0.0.3 seq=3 rtt=24 ms
+size=12 from=10.0.0.3 seq=4 rtt=24 ms
+size=12 from=10.0.0.3 seq=5 rtt=24 ms
+size=12 from=10.0.0.3 seq=6 rtt=25 ms
+size=12 from=10.0.0.3 seq=7 rtt=25 ms
+size=12 from=10.0.0.3 seq=8 rtt=25 ms
+size=12 from=10.0.0.3 seq=9 rtt=25 ms
+size=12 from=10.0.0.3 seq=10 rtt=25 ms
+size=12 from=10.0.0.3 seq=11 rtt=24 ms
+size=12 from=10.0.0.3 seq=12 rtt=24 ms
+size=12 from=10.0.0.3 seq=13 rtt=25 ms
+size=12 from=10.0.0.3 seq=14 rtt=26 ms
+size=12 from=10.0.0.3 seq=15 rtt=24 ms
+size=12 from=10.0.0.3 seq=16 rtt=25 ms
+size=12 from=10.0.0.3 seq=17 rtt=25 ms
+size=12 from=10.0.0.3 seq=18 rtt=25 ms
+size=12 from=10.0.0.3 seq=19 rtt=32 ms
+size=12 from=10.0.0.3 seq=20 rtt=25 ms
+sent=20 received=20 lost=0.0% rtt min/avg/max=24.000/25.550/35.000 ms
